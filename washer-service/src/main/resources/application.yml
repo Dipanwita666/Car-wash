@@ -1,0 +1,15 @@
+server.port: 8081
+
+spring.application.name: WASH-PACK-SERVICE
+spring.config.import: configserver:http://localhost:8888/
+
+spring.data.mongodb.uri: mongodb+srv://Dipanwita:newpassword@clusterdipanwita.w8vrb7e.mongodb.net/?
+spring.data.mongodb.database: WasherDatabase
+
+
+
+springdoc:
+  swagger-ui:
+    path: /washers/swagger
+
+    

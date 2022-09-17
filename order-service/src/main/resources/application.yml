@@ -1,0 +1,19 @@
+server.port: 8082
+
+spring:
+ application:
+  name: ORDER-SERVICE
+ config.import: configserver:http://localhost:8888/
+ data.mongodb:
+  uri: mongodb+srv://Dipanwita:newpassword@clusterdipanwita.w8vrb7e.mongodb.net/?
+  database: OrderDatabase
+ mvc:
+  pathmatch:
+   matching-strategy: ANT_PATH_MATCHER
+   
+   
+   
+   
+springdoc:
+  swagger-ui:
+    path: /orders/swagger
