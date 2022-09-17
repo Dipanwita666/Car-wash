@@ -1,3 +1,51 @@
+/* .App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+body{
+  background-color: rgb(8, 8, 8);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+
+
+
+:root {
+  --imgSide: 2em;
+}
+
 .App {
   text-align: center;
 }
@@ -32,7 +80,132 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+/* .navbar-toggler{
+  width: 90%;
+} */
+
+#form-container {
+  width: 30%;
+  margin-block-end: auto;
+  margin-left: auto;
+  background-position: right;
+}
+
+#button-container {
+  width: 10%;
+}
+
+.advert {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 40vh;
+}
+
+#footer {
+  /* background-color: #25b37e; */
+  font: rgb(237, 232, 232);
+  background-color: rgba(222, 14, 170, 0.747);
+  /* var(--bs-success); */
+  padding-right: 5vh 20vh;
+  font-size: 10px;
+  margin-inline-start: 0%;
+}
+
+.foot {
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50vh;
+}
+
+#welcome-box {
+  margin-left: 5vw;
+  top: 10vw;
+  background-color: rgba(222, 14, 170, 0.557);
+  border: none;
+  color: rgb(255, 255, 255);
+}
+
+.buttonc{
+  color: rgb(237, 243, 230);
+  border-color: rgb(252, 255, 253);
+}
+
+.btn:hover{
+  background-color: rgb(144, 239, 42);
+}
+
+#login-block {
+  border-radius: 10%;
+  width: max-content;
+  top: 10vh;
+  font-family: "Bree Serif";
+  color: var(--bs-light);
+  padding: 5vh 10vh;
+  box-shadow: 0px 0px 20px black;
+  top: 10vh;
+  background-color: rgba(189, 236, 19, 0.13);
+}
+
+.login-input {
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: lighter;
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-bottom: 2px solid var(--bs-success);
+}
+
+#loginTitle{
+  box-shadow: 10px 10px 10px black;
+  background-color: rgba(0 , 0, 0 ,.7);
+}
+
+#loginBox{
+  box-shadow: 10px 10px 10px black;
+  background-color: rgba(0 , 0, 0 ,.8);
+}
+
+#loginBox:hover{
+  border-color: rgb(14, 236, 36);
+  background-color: rgb(119, 175, 155);
+}
+
+.hyper-link{
+  background-color: rgba(0 , 0, 0 ,.8);
+  color: aliceblue;
+  margin-bottom: 10vw;
+}
+
+.hyper-link:hover{
+  color: rgb(149, 240, 141);
+  margin-bottom: 10vw;
+  border-color: rgb(14, 236, 36);
+  color: rgb(123, 255, 0);
+}
+
+#navbox{
+  text-shadow: #06fd96;
+}
+
+#register-block {
+  /* border-radius: 10%; */
+  width: max-content;
+  top: 10vh;
+  font-family: "Bree Serif";
+  color: var(--bs-light);
+  padding: 5vh 10vh;
+  box-shadow: 0px 0px 20px black;
+  /* top: 50vh; */
+  background-color: rgba(38, 255, 0, 0.068);
+}
+
+#registerTitle{
+  box-shadow: 5px 5px 10px rgba(34, 180, 97, 0.438);
+  background-color: rgba(18, 19, 18, 0.441);
 }
