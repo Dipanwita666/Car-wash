@@ -1,5 +1,7 @@
 package com.training.userservice.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ import com.training.userservice.model.User;
 import com.training.userservice.security.AuthenticationRequest;
 import com.training.userservice.security.AuthenticationResponse;
 import com.training.userservice.security.JwtUtil;
+import com.training.userservice.security.MyUserDetails;
 import com.training.userservice.service.CarService;
 import com.training.userservice.service.UserService;
 import com.training.userservice.wrapper.CarList;
@@ -57,7 +60,7 @@ public class UserController {
 		if(saved.equals("User saved successfully")) {
 			return new ResponseEntity<String>(saved,HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String>(saved,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(saved,HttpStatus.OK);
 	}
 	
 	@GetMapping("/list")
@@ -71,7 +74,7 @@ public class UserController {
 		if(updated == "User updated successfully") {
 			return new ResponseEntity<String>(updated, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(updated, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(updated, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/delete")
@@ -80,12 +83,26 @@ public class UserController {
 		if(deleted) {
 			return new ResponseEntity<String>("Users deleted successfully", HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("User with one of these Ids does not exist", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>("User with one of these Ids does not exist", HttpStatus.OK);
 	}
 	
 	
+	@GetMapping("/getUser")
+	public ResponseEntity<User> getUser(HttpServletRequest request){
+		
+		 final String authorizationHeader = request.getHeader("Authorization");
+
+	        String username = null;
+	        String jwt = null;
+
+	        if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")) {
+	            jwt = authorizationHeader.substring(7);
+	            username = jwtUtil.extractUsername(jwt);
+	        }
+	        User user= userService.getUserByUsername(username);
+	        return new ResponseEntity<User>(user, HttpStatus.OK);
 	
-	
+	}
 	
 	
 	@PostMapping("/car/add")
@@ -94,7 +111,7 @@ public class UserController {
 		if(saved.equals("Car saved successfully")) {
 			return new ResponseEntity<String>(saved,HttpStatus.CREATED);
 		}
-		return new ResponseEntity<String>(saved,HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(saved,HttpStatus.OK);
 	}
 	
 	@GetMapping("/car/list")
@@ -108,7 +125,7 @@ public class UserController {
 		if(updated == "Car updated successfully") {
 			return new ResponseEntity<String>(updated, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>(updated, HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>(updated, HttpStatus.OK);
 	}
 	
 	@DeleteMapping("/car/delete")
@@ -117,7 +134,7 @@ public class UserController {
 		if(deleted.equals("Cars deleted successfully")) {
 			return new ResponseEntity<String>(deleted, HttpStatus.OK);
 		}
-		return new ResponseEntity<String>("Car with one of these Ids does not exist", HttpStatus.BAD_REQUEST);
+		return new ResponseEntity<String>("Car with one of these Ids does not exist", HttpStatus.OK);
 	}
 	
 	
@@ -154,7 +171,14 @@ public class UserController {
 	
 	
 	
-
 	
+	@PostMapping("/getUserDetails")
+    public ResponseEntity<MyUserDetails> verifyUser(@RequestBody AuthenticationRequest authRequest) throws Exception {
+        if(authRequest.getPassword().equals("secretsarenevertobeshared")) {
+            MyUserDetails user = userService.getUserDetailsByUsername(authRequest.getUsername());
+            return new ResponseEntity<MyUserDetails>(user, HttpStatus.OK);
+        }
+        throw new Exception("Access Denied");
+    }
 	
 }

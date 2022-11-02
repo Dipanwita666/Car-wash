@@ -44,7 +44,20 @@ public class WasherController {
 	public WashPackList getAllWashpacks() {
 		return washservice.getAllWashpacks();
 		
+		
 	}
+	
+	@PostMapping("/WashPack/exist")
+	public ResponseEntity<Boolean> checkExistence(@RequestBody String washpackId) {
+		
+		if(washservice.doesExists(washpackId))
+		{
+			return new ResponseEntity<Boolean> (true, HttpStatus.OK);
+		}
+			else {
+				return new ResponseEntity<Boolean> (false, HttpStatus.OK);
+		}	
+	}	
 	
 	@PutMapping("/WashPack/update")
 	public ResponseEntity<String> updateWashPack(@RequestBody WashPack washer) {

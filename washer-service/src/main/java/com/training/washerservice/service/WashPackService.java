@@ -16,5 +16,7 @@ public interface WashPackService {
 	public boolean deleteWashPack(StringList stringList);
 	
 	public WashPackList getFilteredWashPacks(Filter filterPack);
+	
+	public boolean doesExists(String Id);
 
 }

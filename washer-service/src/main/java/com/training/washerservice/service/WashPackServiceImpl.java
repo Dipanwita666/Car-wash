@@ -30,6 +30,15 @@ public class WashPackServiceImpl implements WashPackService{
 		return false;
 	}
 	
+	
+	
+	public boolean doesExists(String Id) {
+		return washrepo.existsById(Id);
+		
+	}
+	
+	
+	
 	public boolean validateWashPack(WashPack washer) {
 		if((washer.getWashpackPrice()) <= 300) {
 			return false;

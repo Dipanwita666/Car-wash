@@ -1,12 +1,23 @@
 server:
   port: 8100
   
+  
+#  cloud:
+#    gateway:
+      
+  
 spring:
   config.import: configserver:http://localhost:8888/
   application.name: APIGateway
   main.web-application-type: reactive
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods: "*"
+            allowedHeaders: "*"
       routes:
          - id: order-service
            uri: lb://ORDER-SERVICE

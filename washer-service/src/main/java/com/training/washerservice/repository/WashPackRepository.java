@@ -11,7 +11,7 @@ import com.training.washerservice.model.WashPack;
 @Repository
 public interface WashPackRepository extends MongoRepository<WashPack, String> {
 	
-	@Query(value = "{washpackId: ?0}")
+    @Query(value = "{washpackId: ?0}")
 	public WashPack findByWashPackId(String washpackId);
 	
 	@Query(value = "{washpackId: ?0}",count = true)
